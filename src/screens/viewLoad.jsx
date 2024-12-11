@@ -175,6 +175,7 @@ const DataTable = () => {
         }
       })
       .catch((error) => {
+        getAllLoad()
         setIsPopupOpen(false)
         setBillData([])
         setLoader(false)
