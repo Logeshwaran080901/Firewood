@@ -36,6 +36,7 @@ const LoadEntryScreen = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedLoad, setSelectedLoad] = useState(null);
   useEffect(() => {
+    setShowJoins(false)
     getAllBroker()
     getAllLoad()
   }, [])
@@ -126,14 +127,14 @@ const LoadEntryScreen = () => {
   }
 
   const handleDateChange = (date) => setDate(date);
-  const handleJoinButtonClick = () => {
-    if (!showJoins) {
-      setJoint(Array(joinCount).fill({ brokerid: '', fromlocation: '', labourid: '', localweight: '' }));
-    } else {
-      setJoint([])
-    }
-    setShowJoins(!showJoins);
-  };
+  // const handleJoinButtonClick = () => {
+  //   if (!showJoins) {
+  //     setJoint(Array(joinCount).fill({ brokerid: '', fromlocation: '', labourid: '', localweight: '' }));
+  //   } else {
+  //     setJoint([])
+  //   }
+  //   setShowJoins(!showJoins);
+  // };
 
   const handleJoinCountChange = (e) => {
     const count = parseInt(e.target.value, 10);
@@ -345,7 +346,8 @@ const LoadEntryScreen = () => {
             <p><strong>Broker:</strong> {selectedLoad.brokername}</p>
             <p><strong>Labour:</strong> {selectedLoad.labourname}</p>
             <p><strong>type:</strong> {selectedLoad.type}</p>
-            <p><strong>weigth:</strong> {selectedLoad.companyweight}</p>
+            <p><strong>Company weigth:</strong> {selectedLoad.companyweight}</p>
+            <p><strong>Local weigth:</strong> {selectedLoad.localweight?selectedLoad.localweight:'-'}</p>
             <button
               className="mt-4 bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition w-full"
               onClick={closeModal}

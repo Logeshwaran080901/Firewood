@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {  Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import LoadEntryScreen from '../screens/LoadScreen';
 import DataTable from '../screens/viewLoad';
 import AmountReceivedForm from '../screens/AmountReceived';
@@ -25,12 +25,12 @@ const Sidebar = () => {
           </button>
         </div>
         <nav className="mt-10">
-          <a href="/" className="block text-white p-2">Load Entry</a>
-          <a href="#/viewload" className="block text-white p-2">View Load</a>
-          <a href="#/billed" className="block text-white p-2">billed</a>
-          <a href="#/sender" className="block text-white p-2">Add Company</a>
-          <a href="#/broker" className="block text-white p-2">Add Broker</a>
-          <a href="#/labour" className="block text-white p-2">Add Labour</a>
+          <a href="/" onClick={() => setIsOpen(false)} className="block text-white p-2">Load Entry</a>
+          <a href="#/viewload" onClick={() => setIsOpen(false)} className="block text-white p-2">View Load</a>
+          <a href="#/billed" onClick={() => setIsOpen(false)} className="block text-white p-2">billed</a>
+          <a href="#/sender" onClick={() => setIsOpen(false)} className="block text-white p-2">Add Company</a>
+          <a href="#/broker" onClick={() => setIsOpen(false)} className="block text-white p-2">Add Broker</a>
+          <a href="#/labour" onClick={() => setIsOpen(false)} className="block text-white p-2">Add Labour</a>
         </nav>
       </div>
       <div className="flex-1 flex flex-col">

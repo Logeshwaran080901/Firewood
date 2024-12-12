@@ -45,6 +45,7 @@ const DataTable = () => {
     getAllBroker(e.target.value)
     setFilterData([])
     if (e.target.value === 'labour') {
+      setHeader(BrokerViewHeader)
       setButtonName('Payed to Labour')
     }
     if (e.target.value === 'broker') {
@@ -67,6 +68,7 @@ const DataTable = () => {
           setLoader(false)
           const data = res.data.sort((a, b) => a.date + b.date);
           data.forEach(v => {
+            v.localweight=v.localweight?v.localweight:v.companyweight
             v.date = getdate(v.date)
             v.rate = 0
             v.totalamount = 0
@@ -138,6 +140,12 @@ const DataTable = () => {
         return acc;
       }, {}));
     }
+    billdata.forEach((v) => {
+      v.ton = v.companyweight
+      if (selected === 'labour' || selected === 'broker') {
+        v.ton = v.localweight ? v.localweight : v.companyweight
+      }
+    })
     setBillData(billdata)
     setIsPopupOpen(true);
   };
@@ -228,7 +236,8 @@ const DataTable = () => {
             <p><strong>Broker:</strong> {selectedLoad.brokername}</p>
             <p><strong>Labour:</strong> {selectedLoad.labourname}</p>
             <p><strong>type:</strong> {selectedLoad.type}</p>
-            <p><strong>weigth:</strong> {selectedLoad.companyweight}</p>
+            <p><strong>Company weigth:</strong> {selectedLoad.companyweight}</p>
+            <p><strong>Local weigth:</strong> {selectedLoad.localweight ? selectedLoad.localweight : '-'}</p>
             <button
               className="mt-4 bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition w-full"
               onClick={closeModal}

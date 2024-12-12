@@ -20,13 +20,13 @@ let FullViewHeader = [
     data: 'labourname',
     small: true
   },
-  // {
-  //   label: 'Local Weight',
-  //   data: 'localweight',
-  //   small: false
-  // },
   {
-    label: 'Weight',
+    label: 'Local Weight',
+    data: 'localweight',
+    small: false
+  },
+  {
+    label: 'Company Weight',
     data: 'companyweight',
     small: false
   },

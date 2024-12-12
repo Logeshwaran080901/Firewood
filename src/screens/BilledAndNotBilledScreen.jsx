@@ -68,6 +68,9 @@ export default function BilledAndNotBilled() {
         await axios.get(`${baseUrl}/bill`)
           .then((res) => {
             if (res) {
+              res.data.forEach((v)=>{
+                v.localweight=v.localweight?v.localweight:v.companyweight
+              })
               setTableData( res.data)
              
               // console.log(res.data)

@@ -11,7 +11,7 @@ const BillingPopup = ({ loader,billingData, setBillData, save,onClose }) => {
 
     useEffect(() => {
         // Calculate total weight on initial render
-        const totalWeight = billingData.reduce((acc, item) => acc + item.companyweight, 0);
+        const totalWeight = billingData.reduce((acc, item) => acc + item.ton, 0);
         setTotalWeight(totalWeight.toFixed(3));
     }, [billingData]);
 
@@ -19,7 +19,7 @@ const BillingPopup = ({ loader,billingData, setBillData, save,onClose }) => {
         // Calculate total amount whenever the rate or totalRate changes
         const totalSum = billingData.reduce((acc, item) => {
             const itemRate = item.rate || 0;
-            const itemTotal = itemRate * item.companyweight;
+            const itemTotal = itemRate * item.ton;
             return acc + itemTotal;
         }, 0);
         const totalRate1 = billingData.reduce((acc, item) => {
@@ -36,7 +36,7 @@ const BillingPopup = ({ loader,billingData, setBillData, save,onClose }) => {
         if (value >= 0) {
             const updatedata = billingData.find(v => v._id === id);
             updatedata.rate = value ?? 0;
-            updatedata.totalamount = Math.round(updatedata.companyweight * value ?? 0);
+            updatedata.totalamount = Math.round(updatedata.ton * value ?? 0);
             const notiddata = billingData.filter(v => v._id !== id);
             notiddata.splice(index, 0, updatedata);
             setBillData([...notiddata]);
@@ -80,7 +80,7 @@ const BillingPopup = ({ loader,billingData, setBillData, save,onClose }) => {
                             {billingData.map((item, index) => (
                                 <tr key={item._id}>
                                     <td className="py-2 px-4 border-b">{item.date.substring(0, 4)}</td>
-                                    <td className="py-2 px-4 border-b">{item.companyweight}</td>
+                                    <td className="py-2 px-4 border-b">{item.ton}</td>
                                     <td className="py-2 px-4 border-b">
                                         <input
                                             type="number"
