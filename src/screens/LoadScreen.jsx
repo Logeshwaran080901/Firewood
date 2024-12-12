@@ -268,6 +268,14 @@ const LoadEntryScreen = () => {
                 label={'Select Labour'}
                 options={labourOption}
               />
+              <InputBox
+              label='Local Weight'
+              value={localweight}
+              regex
+              type='number'
+              onChange={(e) => setLocalWeight(e.target.value)}
+              placeholder="Enter Labour Weight"
+            />
               <Dropdown
                 value={type}
                 handleDropdown={(e) => setType(e.target.value)}
@@ -280,14 +288,7 @@ const LoadEntryScreen = () => {
                 placeholder="Enter Other Type"
                 onChange={(e) => setOtherType(e.target.value)}
               />}
-              {/* <InputBox
-              label='Local Weight'
-              value={localweight}
-              regex
-              type='number'
-              onChange={(e) => setLocalWeight(e.target.value)}
-              placeholder="Enter Labour Weight"
-            /> */}
+              
             </div>
           )}
           <div className="pt-0 sm:pt-3 flex flex-col sm:flex-row sm:space-x-4">
