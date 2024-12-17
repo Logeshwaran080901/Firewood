@@ -127,14 +127,14 @@ const LoadEntryScreen = () => {
   }
 
   const handleDateChange = (date) => setDate(date);
-  // const handleJoinButtonClick = () => {
-  //   if (!showJoins) {
-  //     setJoint(Array(joinCount).fill({ brokerid: '', fromlocation: '', labourid: '', localweight: '' }));
-  //   } else {
-  //     setJoint([])
-  //   }
-  //   setShowJoins(!showJoins);
-  // };
+  const handleJoinButtonClick = () => {
+    if (!showJoins) {
+      setJoint(Array(joinCount).fill({ brokerid: '', fromlocation: '', labourid: '', localweight: '' }));
+    } else {
+      setJoint([])
+    }
+    setShowJoins(!showJoins);
+  };
 
   const handleJoinCountChange = (e) => {
     const count = parseInt(e.target.value, 10);
@@ -195,14 +195,14 @@ const LoadEntryScreen = () => {
       <div className="overflow-x-auto">
         <FieldSetLayout >
           <div className="flex flex-col sm:flex-row sm:space-x-4">
-            {/* <div className="flex sm:flex-col justify-center sm:mt-8">
+            <div className="flex sm:flex-col justify-center sm:mt-8">
             <button
               className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition"
               onClick={handleJoinButtonClick}
             >
               {showJoins ? 'Not Joint' : 'Joint'}
             </button>
-          </div> */}
+          </div>
             <CustomDatePicker
               label='Load Date'
               selectedDate={date}
